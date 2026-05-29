@@ -47,4 +47,8 @@ CLAUDE.md
 # Convex generated files
 convex/_generated/
 
+# Editor configurations
+.vscode/
+
+
 
