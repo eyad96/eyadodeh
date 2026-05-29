@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Terminal, Shield, Sparkles, Code2, Globe, Cpu, Mail } from "lucide-react";
+import { ArrowRight, Terminal, Shield, Sparkles, Code2, Globe, Cpu, Mail, FileDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 export default function Home() {
+  const resumeData = useQuery(api.resume.get);
+  const resumeUrl = resumeData?.resumeUrl || "";
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -83,6 +88,18 @@ export default function Home() {
             >
               Contact Me
             </Link>
+
+            {resumeUrl && (
+              <a
+                href={resumeUrl}
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 hover:bg-indigo-500/20 text-indigo-400 font-mono text-sm font-bold active:scale-95 transition-all duration-200"
+              >
+                Download CV <FileDown className="h-4 w-4 ml-1.5" />
+              </a>
+            )}
           </motion.div>
 
           {/* Socials Connection */}

@@ -14,7 +14,7 @@ interface PageProps {
 async function getProject(slug: string) {
   // 1. Check Convex database first (allows dynamic live overrides from dashboard)
   try {
-    const cp = await fetchQuery(api.projects.getBySlug, { slug });
+    const cp = await fetchQuery(api.projects.getBySlug, { slug }) as any;
     if (cp) {
       return {
         slug: cp.slug || cp._id,
@@ -164,7 +164,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 Highlighted Capabilities
               </h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                {project.features.map((feature) => (
+                {project.features.map((feature: string) => (
                   <li
                     key={feature}
                     className="p-3 bg-zinc-950/40 rounded-xl border border-zinc-900 flex items-start space-x-3 text-sm text-zinc-400 leading-relaxed font-sans shadow-inner"
@@ -186,7 +186,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               </h2>
               <div className="h-[1px] w-full bg-zinc-900" />
               <div className="flex flex-wrap gap-2 pt-1">
-                {project.techStack.map((tech) => (
+                {project.techStack.map((tech: string) => (
                   <span
                     key={tech}
                     className="px-3 py-1.5 text-xs font-mono font-bold rounded-lg bg-zinc-950 border border-zinc-900 text-zinc-400 shadow-inner"

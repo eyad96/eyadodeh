@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Terminal, Users, Calendar, Award, Code, CheckCircle, Database, Layout } from "lucide-react";
+import { Terminal, Users, Calendar, Award, Code, CheckCircle, Database, Layout, FileDown } from "lucide-react";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
@@ -47,6 +47,9 @@ export default function AboutPage() {
   };
 
   const profile = useQuery(api.about.get);
+  const resumeData = useQuery(api.resume.get);
+  const resumeUrl = resumeData?.resumeUrl || "";
+
   const photo = profile?.photo || "/images/eyad.jpg";
   const bio = profile?.bio || [
     "Hi, I am Eyad, a high-end frontend engineer with a deep passion for designing interfaces that feel fast, interactive, and beautifully responsive. I thrive at the intersection of aesthetic design and rigorous technical architecture.",
@@ -113,6 +116,21 @@ export default function AboutPage() {
                 </p>
               );
             })}
+
+            {/* Premium Resume Download Button */}
+            {resumeUrl && (
+              <div className="pt-4">
+                <a
+                  href={resumeUrl}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 hover:bg-indigo-500/20 text-indigo-400 font-mono text-sm font-bold active:scale-95 transition-all duration-200"
+                >
+                  Download Complete CV <FileDown className="h-4 w-4 ml-1.5" />
+                </a>
+              </div>
+            )}
           </div>
         </div>
 

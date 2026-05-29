@@ -44,3 +44,7 @@ next-env.d.ts
 AGENTS.md
 CLAUDE.md
 
+# Convex generated files
+convex/_generated/
+
+

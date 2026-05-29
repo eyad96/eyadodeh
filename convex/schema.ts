@@ -30,4 +30,8 @@ export default defineSchema({
     title: v.optional(v.string()),
     createdAt: v.number(),
   }),
+  resume: defineTable({
+    resumeUrl: v.string(),
+    createdAt: v.number(),
+  }),
 });

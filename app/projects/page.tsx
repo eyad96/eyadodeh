@@ -148,7 +148,7 @@ export default function ProjectsPage() {
 
                   {/* Tech stack badges */}
                   <div className="flex flex-wrap gap-1.5 pt-1">
-                    {project.techStack.map((tech) => (
+                    {project.techStack.map((tech: string) => (
                       <span
                         key={tech}
                         className="px-2.5 py-1 text-[10px] font-mono font-bold rounded-lg bg-zinc-900/60 border border-zinc-800 text-zinc-400 shadow-inner"
