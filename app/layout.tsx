@@ -26,6 +26,10 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL 
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` 
+  : "https://portfolio-eyadodeh.vercel.app";
+
 export const metadata: Metadata = {
   title: {
     default: "Eyad Odeh | Premium Frontend Engineer & SaaS Architect",
@@ -35,11 +39,11 @@ export const metadata: Metadata = {
   keywords: ["Next.js 15 Portfolio", "Tailwind CSS Developer", "Framer Motion Animations", "React Engineer", "SaaS Dashboard Specialist", "Freelance Web Developer"],
   authors: [{ name: "Eyad Odeh" }],
   creator: "Eyad Odeh",
-  metadataBase: new URL("https://github.com/eyad96"),
+  metadataBase: new URL(vercelUrl),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://github.com/eyad96",
+    url: vercelUrl,
     title: "Eyad Odeh | Premium Frontend Engineer Portfolio",
     description: "Futuristic developer portfolio showcasing premium SaaS interfaces, web animations, and clean code architecture.",
     siteName: "Eyad Odeh Developer Portfolio",
