@@ -1,5 +1,6 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
+import { Id } from "./_generated/dataModel";
 
 export const seedLocalProjects = mutation({
   args: {},
@@ -97,7 +98,7 @@ export const seedLocalProjects = mutation({
       if (!existing) {
         await ctx.db.insert("projects", {
           ...p,
-          category: p.category as any,
+          category: p.category,
           createdAt: Date.now() - (count * 1000), // maintain ordering order
         });
         count++;
@@ -128,7 +129,7 @@ export const getBySlug = query({
 
     // Fallback: try by ID if slug is not defined/unique
     try {
-      const byId = await ctx.db.get(args.slug as any);
+      const byId = await ctx.db.get(args.slug as unknown as Id<"projects">);
       if (byId) return byId;
     } catch {
       // ignore parsing errors

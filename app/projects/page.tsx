@@ -28,7 +28,7 @@ export default function ProjectsPage() {
     solutions: cp.solutions || "Leveraged Convex real-time reactive schemas.",
     liveDemoUrl: cp.liveDemoUrl,
     githubUrl: cp.githubUrl || "#",
-    category: (cp.category as any) || "AI & SaaS",
+    category: cp.category || "AI & SaaS",
     isLongScreenshot: cp.isLongScreenshot || false,
   }));
 

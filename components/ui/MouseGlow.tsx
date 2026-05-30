@@ -18,6 +18,7 @@ export function MouseGlow() {
   const dotSpringY = useSpring(mouseY, { stiffness: 150, damping: 25, mass: 0.2 });
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
 
     const handleMouseMove = (e: MouseEvent) => {

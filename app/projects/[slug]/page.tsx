@@ -14,7 +14,23 @@ interface PageProps {
 async function getProject(slug: string) {
   // 1. Check Convex database first (allows dynamic live overrides from dashboard)
   try {
-    const cp = await fetchQuery(api.projects.getBySlug, { slug }) as any;
+    const cp = (await fetchQuery(api.projects.getBySlug, { slug })) as {
+      _id: string;
+      slug?: string;
+      title: string;
+      description: string;
+      longDescription?: string;
+      heroImage: string;
+      techStack?: string[];
+      features?: string[];
+      challenges?: string;
+      solutions?: string;
+      liveDemoUrl: string;
+      githubUrl?: string;
+      category?: string;
+      isLongScreenshot?: boolean;
+    } | null;
+    
     if (cp) {
       return {
         slug: cp.slug || cp._id,
@@ -28,7 +44,7 @@ async function getProject(slug: string) {
         solutions: cp.solutions || "Leveraged Convex real-time reactive schemas.",
         liveDemoUrl: cp.liveDemoUrl,
         githubUrl: cp.githubUrl || "#",
-        category: (cp.category as any) || "AI & SaaS",
+        category: cp.category || "AI & SaaS",
         isLongScreenshot: cp.isLongScreenshot || false,
       };
     }
