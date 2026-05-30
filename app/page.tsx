@@ -9,7 +9,7 @@ import { api } from "@/convex/_generated/api";
 
 export default function Home() {
   const resumeData = useQuery(api.resume.get);
-  const resumeUrl = resumeData?.resumeUrl || "";
+  const resumeUrl = resumeData?.resumeUrl || "/Resume/Eyad Odeh Resume.pdf";
 
   const containerVariants = {
     hidden: { opacity: 0 },

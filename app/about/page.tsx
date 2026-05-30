@@ -48,7 +48,7 @@ export default function AboutPage() {
 
   const profile = useQuery(api.about.get);
   const resumeData = useQuery(api.resume.get);
-  const resumeUrl = resumeData?.resumeUrl || "";
+  const resumeUrl = resumeData?.resumeUrl || "/Resume/Eyad Odeh Resume.pdf";
 
   const photo = profile?.photo || "/images/eyad.jpg";
   const bio = profile?.bio || [
