@@ -24,3 +24,23 @@ export const seedResume = mutation({
     return "Resume already exists.";
   },
 });
+
+// Mutation to dynamically update the active CV URL
+export const update = mutation({
+  args: { resumeUrl: v.string() },
+  handler: async (ctx, args) => {
+    const existing = await ctx.db.query("resume").first();
+    if (existing) {
+      await ctx.db.patch(existing._id, {
+        resumeUrl: args.resumeUrl,
+      });
+      return "Resume URL updated successfully!";
+    } else {
+      await ctx.db.insert("resume", {
+        resumeUrl: args.resumeUrl,
+        createdAt: Date.now(),
+      });
+      return "Resume URL created successfully!";
+    }
+  },
+});
