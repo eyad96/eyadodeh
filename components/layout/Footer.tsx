@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { Mail, ArrowUpRight } from "lucide-react";
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "@/components/ui/Icons";
+import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
 import { Logo } from "@/components/ui/Logo";
 
 const socialLinks = [
   { href: "https://github.com/eyad96", icon: GithubIcon, label: "GitHub" },
   { href: "https://www.linkedin.com/in/eyad-odeh/", icon: LinkedinIcon, label: "LinkedIn" },
-  { href: "https://twitter.com", icon: TwitterIcon, label: "Twitter" },
   { href: "mailto:odeh.eyad96@gmail.com", icon: Mail, label: "Email" },
 ];
 
